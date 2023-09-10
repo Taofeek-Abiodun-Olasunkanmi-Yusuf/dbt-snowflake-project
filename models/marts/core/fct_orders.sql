@@ -1,13 +1,10 @@
 with orders as (
     select
-        id as order_id,
-        user_id as customer_id,
-        amount
-
-    from raw.jaffle_shop.orders,
-    where amount like (
-            select amount from raw.stripe.payment
-        )
+        orders.id as order_id,
+        orders.user_id as customer_id,
+        payments.amount as amount
+    from raw.jaffle_shop.orders, raw.stripe.payment
+    inner join payment on orders.order_id == payments.order_id
 )
 
 select * from orders

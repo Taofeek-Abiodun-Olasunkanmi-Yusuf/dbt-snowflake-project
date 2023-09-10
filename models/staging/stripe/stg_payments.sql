@@ -4,9 +4,8 @@ with payments as (
         orderid as order_id,
         paymentmethod as payment_method,
         status,
-        amount,
-        cretaed as dates
-
+        amount
+        
     from raw.stripe.payment
 )
 
