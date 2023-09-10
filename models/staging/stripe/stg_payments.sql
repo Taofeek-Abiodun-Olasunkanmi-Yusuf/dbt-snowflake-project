@@ -5,7 +5,7 @@ with payments as (
         paymentmethod as payment_method,
         status,
         amount,
-        cretaed
+        cretaed as dates
 
     from raw.stripe.payment
 )
