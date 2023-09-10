@@ -6,6 +6,14 @@ orders as (
     select * from {{ ref ('stg_orders') }}
 ),
 
+payment as (
+    select * from {{ ref ('stg_payments') }}
+),
+
+orders as (
+    select * from {{ ref ('fct_orders') }}
+),
+
 customer_orders as (
 
     select
@@ -21,6 +29,15 @@ customer_orders as (
 
 ),
 
+lifetime_value as (
+    select
+        payment_id,
+
+        sum(amount) as total_amount
+    
+    from payment
+),
+
 final as (
 
     select
@@ -29,6 +46,7 @@ final as (
         customers.last_name,
         customer_orders.first_order_date,
         customer_orders.most_recent_order_date,
+        lifetime_value.total_amount,
         coalesce(customer_orders.number_of_orders, 0) as number_of_orders
 
     from customers
