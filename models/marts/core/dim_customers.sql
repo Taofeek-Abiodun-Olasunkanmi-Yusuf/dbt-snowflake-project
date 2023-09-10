@@ -6,7 +6,7 @@ orders as (
     select * from {{ ref ('stg_orders') }}
 ),
 
-payment as (
+payments as (
     select * from {{ ref ('stg_payments') }}
 ),
 
@@ -35,7 +35,7 @@ lifetime_value as (
 
         sum(amount) as total_amount
     
-    from payment
+    from payments
 ),
 
 final as (
