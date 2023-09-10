@@ -5,7 +5,7 @@ with orders as (
         raw.stripe.payment.amount as amount
     from raw.jaffle_shop.orders
     inner join raw.stripe.payment 
-    on raw.jaffle_shop.orders.order_id = raw.stripe.payment.order_id
+    on orders.order_id = payment.order_id
 )
 
 select * from orders
