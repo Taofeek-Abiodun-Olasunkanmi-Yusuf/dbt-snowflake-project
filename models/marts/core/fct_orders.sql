@@ -3,10 +3,10 @@ with orders as (
         order_id,
         customer_id,
         amount
-        
-    from raw.core.orders
+
+    from raw.jaffle_shop.orders
     where amount like (
-            select amount from raw.stripe.payments
+            select amount from raw.stripe.payment
         )
 )
 

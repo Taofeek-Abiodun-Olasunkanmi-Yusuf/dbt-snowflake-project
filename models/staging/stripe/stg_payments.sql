@@ -7,7 +7,7 @@ with payments as (
         amount,
         cretaed
 
-    from raw.stripe.payments
+    from raw.stripe.payment
 )
 
 select * from payments
